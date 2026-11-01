@@ -1,0 +1,127 @@
+collections:
+  - id: cathlab-ocr-writeback
+    title: Cathlab schedule recognition and writeback
+    entry_skill: cathlab-schedule-ocr
+    skills:
+      - name: cathlab-schedule-ocr
+        path: skills/cathlab-schedule-ocr
+        role: OCR + structuring rule engine
+      - name: gsheet-append-dedup
+        path: skills/gsheet-append-dedup
+        role: dedup append + blank-field patch writer
+    relations:
+      - from: cathlab-schedule-ocr
+        to: gsheet-append-dedup
+
+  - id: medical-inventory-tencent-import
+    title: Inventory import and arrival-status flip
+    entry_skill: medical-inventory-tencent-import
+    skills:
+      - name: medical-inventory-tencent-import
+        path: skills/medical-inventory-tencent-import
+        role: strict 10-column inventory conversion; when delivered goods reach the cath lab, flip `货物存放` from "company warehouse" to "cath lab" (encoding-safe, rule v4)
+    relations: []
+
+  - id: warehouse-shipment-planning
+    title: Warehouse replenishment and pre-shipment planning
+    entry_skill: warehouse-shipment-planning
+    skills:
+      - name: warehouse-shipment-planning
+        path: skills/warehouse-shipment-planning
+        role: from empty-patient-id remainder in the formal inventory + target stock band, produce replenishment plan for the upstream warehouse
+      - name: warehouse-shipment-dida-task
+        path: skills/warehouse-shipment-dida-task
+        role: sync the day's confirmed shipment list into TickTick `📚Work / <hospital> shipment` using a fixed template
+    relations:
+      - from: warehouse-shipment-planning
+        to: warehouse-shipment-dida-task
+        type: task_sync
+      - from: warehouse-shipment-planning
+        to: order-shipment
+        type: planning_input
+
+  - id: material-complaint-update
+    title: Material complaint update
+    entry_skill: material-complaint-update
+    skills:
+      - name: material-complaint-update
+        path: skills/material-complaint-update
+        role: from complaint photo + same-day case context, locate original inventory row in Tencent Docs and patch complaint number + remarks
+    relations: []
+
+  - id: business-process-automation
+    title: Business system process automation
+    entry_skill: order-shipment
+    skills:
+      - name: spd-confirm-supply
+        path: skills/spd-confirm-supply
+        role: confirm new purchase order in SPD homepage to-do
+      - name: order-shipment
+        path: skills/order-shipment
+        role: shipment order pipeline
+      - name: spd-confirm-delivery
+        path: skills/spd-confirm-delivery
+        role: fast path on the current shipment edit page
+      - name: vendor-invoice-records
+        path: skills/vendor-invoice-records
+        role: vendor invoice collection + Excel writeback
+    relations:
+      - from: spd-confirm-supply
+        to: order-shipment
+        type: precondition
+      - from: order-shipment
+        to: spd-confirm-delivery
+        type: fast_path
+
+  - id: vendor-sales-inventory-sync
+    title: Vendor on-site sales / inventory sync
+    entry_skill: vendor-sales-inventory-sync
+    skills:
+      - name: vendor-sales-inventory-sync
+        path: skills/vendor-sales-inventory-sync
+        role: read the day's vendor on-site cases from Google Sheet; persist filtered set as local JSON; OCR + barcode + QR cross-check with vendor-prefixed codes
+    relations: []
+
+  - id: surgery-reporting
+    title: Surgery records summary
+    entry_skill: surgery-summary
+    skills:
+      - name: surgery-summary
+        path: skills/surgery-summary
+        role: markdown surgery records aggregation
+      - name: surgery-volume-summary
+        path: skills/surgery-volume-summary
+        role: weekly / monthly / yearly summary one-liners + closure validation
+    relations:
+      - from: surgery-summary
+        to: surgery-volume-summary
+
+  - id: task-closeout-standards
+    title: Cross-task closeout and doc standard
+    entry_skill: task-closeout-standards
+    skills:
+      - name: task-closeout-standards
+        path: skills/task-closeout-standards
+        role: post-task retrospective and new-doc clarity constraint
+    relations: []
+
+  - id: tencent-docs-shared-foundation
+    title: Tencent Docs shared backend
+    entry_skill: tencent-docs-api-v3
+    skills:
+      - name: tencent-docs-api-v3
+        path: skills/tencent-docs-api-v3
+        role: Tencent Docs official API V3 read/write client, for read-only and pure-value-write flows
+    relations:
+      - from: tencent-docs-api-v3
+        to: medical-inventory-tencent-import
+        type: shared_backend
+      - from: tencent-docs-api-v3
+        to: warehouse-shipment-planning
+        type: shared_backend
+      - from: tencent-docs-api-v3
+        to: material-complaint-update
+        type: shared_backend
+      - from: tencent-docs-api-v3
+        to: vendor-sales-inventory-sync
+        type: shared_backend

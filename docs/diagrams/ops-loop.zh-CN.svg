@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="560" viewBox="0 0 1280 560" role="img" aria-labelledby="title desc">
+  <title id="title">临床运营闭环</title>
+  <desc id="desc">用小白能理解的方式展示从手术排班到耗材记录、库存变化、补货发货、复盘分析和规则迭代的运营闭环。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,4 L0,8 z" fill="#334155"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { font: 700 30px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 15px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", sans-serif; fill: #475569; }
+      .step-title { font: 700 15px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", sans-serif; fill: #0f172a; }
+      .body { font: 400 12px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", sans-serif; fill: #475569; }
+      .small { font: 700 11px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", sans-serif; fill: #334155; }
+      .card { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.2; rx: 16; }
+      .start { fill: #eff6ff; stroke: #93c5fd; stroke-width: 1.4; rx: 16; }
+      .track { fill: #ecfdf5; stroke: #86efac; stroke-width: 1.4; rx: 16; }
+      .risk { fill: #fff7ed; stroke: #fb923c; stroke-width: 1.4; rx: 16; }
+      .review { fill: #f5f3ff; stroke: #a78bfa; stroke-width: 1.4; rx: 16; }
+      .line { fill: none; stroke: #334155; stroke-width: 1.7; marker-end: url(#arrow); }
+      .loop { fill: none; stroke: #64748b; stroke-width: 1.3; stroke-dasharray: 7 6; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1280" height="560"/>
+  <text class="title" x="48" y="54">这个项目在做什么</text>
+  <text class="subtitle" x="48" y="80">它把每天的一线临床运营串成可追踪闭环：先知道手术，再记录耗材，跟踪库存，安全发货，最后复盘和迭代。</text>
+
+  <rect class="start" x="54" y="150" width="176" height="118"/>
+  <text class="step-title" x="78" y="181">1. 手术排班</text>
+  <text class="body" x="78" y="207">知道今天有哪些手术、</text>
+  <text class="body" x="78" y="226">什么术式、谁做、</text>
+  <text class="body" x="78" y="245">可能用什么耗材。</text>
+
+  <rect class="track" x="278" y="150" width="176" height="118"/>
+  <text class="step-title" x="302" y="181">2. 耗材使用</text>
+  <text class="body" x="302" y="207">把每台手术和图片、</text>
+  <text class="body" x="302" y="226">OCR、条码 / 二维码、</text>
+  <text class="body" x="302" y="245">实际耗材关联起来。</text>
+
+  <rect class="track" x="502" y="150" width="176" height="118"/>
+  <text class="step-title" x="526" y="181">3. 库存变化</text>
+  <text class="body" x="526" y="207">同步公司仓库、院内</text>
+  <text class="body" x="526" y="226">SPD 和已使用耗材的</text>
+  <text class="body" x="526" y="245">数量与位置。</text>
+
+  <rect class="risk" x="726" y="150" width="176" height="118"/>
+  <text class="step-title" x="750" y="181">4. 补货 / 发货</text>
+  <text class="body" x="750" y="207">生成补货计划；涉及</text>
+  <text class="body" x="750" y="226">真实发货时先审批，</text>
+  <text class="body" x="750" y="245">再执行并回读验证。</text>
+
+  <rect class="review" x="950" y="150" width="176" height="118"/>
+  <text class="step-title" x="974" y="181">5. 复盘信号</text>
+  <text class="body" x="974" y="207">分析本品牌 / 竞品占比、</text>
+  <text class="body" x="974" y="226">产品使用变化、异常和</text>
+  <text class="body" x="974" y="245">后续跟进重点。</text>
+
+  <path class="line" d="M230 209 H278"/>
+  <path class="line" d="M454 209 H502"/>
+  <path class="line" d="M678 209 H726"/>
+  <path class="line" d="M902 209 H950"/>
+
+  <rect class="card" x="158" y="340" width="964" height="92"/>
+  <text class="step-title" x="190" y="374">为什么需要工程化</text>
+  <text class="body" x="190" y="400">同一批事实会被用于占比分析、库存判断、发货补货和销售总结。前面一步错了，后面决策都会不可靠。</text>
+  <text class="small" x="190" y="424">因此系统用结构化 skills、人工审批门、执行后回读、数据隔离和任务复盘来控制风险。</text>
+
+  <path class="loop" d="M1038 268 C1020 504 218 508 142 268"/>
+  <text class="small" x="514" y="506">异常和人工纠正会沉淀成下次规则</text>
+</svg>

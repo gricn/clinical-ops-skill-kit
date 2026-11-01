@@ -1,0 +1,56 @@
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Editor/IDE local settings
+.qwen/
+.claude/
+.idea/
+.vscode/
+.tmp_*
+
+# Excel outputs (including backups)
+*.xlsx
+*.xlsm
+*.xltx
+*.xltm
+~$*.xlsx
+*.bak
+*.orig
+
+# Whitelist fixture spreadsheets / docs (samples only)
+!fixtures/**/*.xlsx
+!fixtures/**/*.docx
+!tests/fixtures/**/*.xlsx
+!tests/fixtures/**/*.docx
+
+# Local credentials — never commit
+secrets/*
+!secrets/README.md
+!secrets/.gitkeep
+
+# Default deny runtime files; publish only directory descriptions.
+workspaces/**
+!workspaces/README.md
+!workspaces/*/
+!workspaces/*/README.md
+!workspaces/*/.gitkeep
+.env
+.env.*
+*.pem
+*.key
+*token_cache*.json
+**/browser-profile*/
+
+# Raw business records — never commit
+surgery_records/*
+!surgery_records/README.md
+!surgery_records/.gitkeep
+
+# Also ignore virtualenv symlinks.
+.venv

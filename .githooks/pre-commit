@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Pre-commit hook entry. Runs the repo's precommit gate.
+set -euo pipefail
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+exec "$REPO_ROOT/scripts/precommit_checks.sh"

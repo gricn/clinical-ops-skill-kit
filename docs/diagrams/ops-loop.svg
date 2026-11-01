@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="560" viewBox="0 0 1280 560" role="img" aria-labelledby="title desc">
+  <title id="title">Clinical Operations Loop</title>
+  <desc id="desc">Plain-language operations loop from surgery schedule to material tracking, inventory movement, replenishment, shipment, review and rule iteration.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,4 L0,8 z" fill="#334155"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { font: 700 30px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 15px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #475569; }
+      .step-title { font: 700 15px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; }
+      .body { font: 400 12px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #475569; }
+      .small { font: 700 11px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #334155; }
+      .card { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.2; rx: 16; }
+      .start { fill: #eff6ff; stroke: #93c5fd; stroke-width: 1.4; rx: 16; }
+      .track { fill: #ecfdf5; stroke: #86efac; stroke-width: 1.4; rx: 16; }
+      .risk { fill: #fff7ed; stroke: #fb923c; stroke-width: 1.4; rx: 16; }
+      .review { fill: #f5f3ff; stroke: #a78bfa; stroke-width: 1.4; rx: 16; }
+      .line { fill: none; stroke: #334155; stroke-width: 1.7; marker-end: url(#arrow); }
+      .loop { fill: none; stroke: #64748b; stroke-width: 1.3; stroke-dasharray: 7 6; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1280" height="560"/>
+  <text class="title" x="48" y="54">What the Project Does</text>
+  <text class="subtitle" x="48" y="80">It turns daily clinical operations into a traceable loop: plan cases, record material usage, track inventory, ship safely, then review and improve.</text>
+
+  <rect class="start" x="54" y="150" width="176" height="118"/>
+  <text class="step-title" x="78" y="181">1. Surgery schedule</text>
+  <text class="body" x="78" y="207">Know today's cases,</text>
+  <text class="body" x="78" y="226">procedure types, surgeons,</text>
+  <text class="body" x="78" y="245">and expected materials.</text>
+
+  <rect class="track" x="278" y="150" width="176" height="118"/>
+  <text class="step-title" x="302" y="181">2. Material usage</text>
+  <text class="body" x="302" y="207">Link each case to photos,</text>
+  <text class="body" x="302" y="226">OCR, barcode / QR and</text>
+  <text class="body" x="302" y="245">actual materials used.</text>
+
+  <rect class="track" x="502" y="150" width="176" height="118"/>
+  <text class="step-title" x="526" y="181">3. Inventory movement</text>
+  <text class="body" x="526" y="207">Keep warehouse, hospital</text>
+  <text class="body" x="526" y="226">SPD and used materials</text>
+  <text class="body" x="526" y="245">in sync.</text>
+
+  <rect class="risk" x="726" y="150" width="176" height="118"/>
+  <text class="step-title" x="750" y="181">4. Replenish / ship</text>
+  <text class="body" x="750" y="207">Generate replenishment</text>
+  <text class="body" x="750" y="226">plans; require approval</text>
+  <text class="body" x="750" y="245">before live shipment.</text>
+
+  <rect class="review" x="950" y="150" width="176" height="118"/>
+  <text class="step-title" x="974" y="181">5. Review signals</text>
+  <text class="body" x="974" y="207">Analyze brand share,</text>
+  <text class="body" x="974" y="226">competitor share, product</text>
+  <text class="body" x="974" y="245">usage and exceptions.</text>
+
+  <path class="line" d="M230 209 H278"/>
+  <path class="line" d="M454 209 H502"/>
+  <path class="line" d="M678 209 H726"/>
+  <path class="line" d="M902 209 H950"/>
+
+  <rect class="card" x="158" y="340" width="964" height="92"/>
+  <text class="step-title" x="190" y="374">Why this needs engineering</text>
+  <text class="body" x="190" y="400">The same facts are reused across analysis, inventory, shipment and reporting. If any step is wrong, later decisions become unreliable.</text>
+  <text class="small" x="190" y="424">The system therefore uses structured skills, human approval for high-risk actions, read-back verification, data isolation and post-task retrospectives.</text>
+
+  <path class="loop" d="M1038 268 C1020 504 218 508 142 268"/>
+  <text class="small" x="497" y="506">Exceptions and corrections become future rules</text>
+</svg>

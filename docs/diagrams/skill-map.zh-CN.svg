@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+  <title id="title">临床运营 Skill 关系图</title>
+  <desc id="desc">展示输入如何进入五类业务工作流，并由共享后端、安全门、运行隔离和迭代闭环支撑。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,4 L0,8 z" fill="#334155"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { font: 700 30px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 15px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", sans-serif; fill: #475569; }
+      .section { font: 700 16px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", sans-serif; fill: #0f172a; }
+      .card-title { font: 700 14px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", sans-serif; fill: #0f172a; }
+      .body { font: 400 12px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", sans-serif; fill: #475569; }
+      .mono { font: 600 10.5px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #334155; }
+      .label { font: 700 12px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", sans-serif; fill: #334155; }
+      .panel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.2; rx: 18; }
+      .input { fill: #eff6ff; stroke: #93c5fd; stroke-width: 1.2; rx: 12; }
+      .flow { fill: #ffffff; stroke: #94a3b8; stroke-width: 1.2; rx: 12; }
+      .risk { fill: #fff7ed; stroke: #fb923c; stroke-width: 1.4; rx: 12; }
+      .foundation { fill: #f5f3ff; stroke: #a78bfa; stroke-width: 1.2; rx: 12; }
+      .line { fill: none; stroke: #334155; stroke-width: 1.6; marker-end: url(#arrow); }
+      .soft { fill: none; stroke: #64748b; stroke-width: 1.2; stroke-dasharray: 6 5; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1280" height="760"/>
+  <text class="title" x="48" y="54">临床运营 Skill 关系图</text>
+  <text class="subtitle" x="48" y="80">从左到右阅读：杂乱业务输入进入受控工作流，再由工程控制保证安全、稳定和可持续迭代。</text>
+
+  <rect class="panel" x="42" y="120" width="260" height="470"/>
+  <text class="section" x="66" y="152">业务输入</text>
+  <rect class="input" x="66" y="182" width="212" height="54"/>
+  <text class="card-title" x="86" y="207">排班资料</text>
+  <text class="body" x="86" y="226">Word、照片、截图</text>
+  <rect class="input" x="66" y="252" width="212" height="54"/>
+  <text class="card-title" x="86" y="277">库存文件</text>
+  <text class="body" x="86" y="296">Excel、批号、序列号字段</text>
+  <rect class="input" x="66" y="322" width="212" height="54"/>
+  <text class="card-title" x="86" y="347">耗材证据</text>
+  <text class="body" x="86" y="366">OCR、条码、二维码、手写备注</text>
+  <rect class="input" x="66" y="392" width="212" height="54"/>
+  <text class="card-title" x="86" y="417">业务系统</text>
+  <text class="body" x="86" y="436">腾讯文档、Google Sheet、SPD 页面</text>
+  <rect class="input" x="66" y="462" width="212" height="54"/>
+  <text class="card-title" x="86" y="487">每日记录</text>
+  <text class="body" x="86" y="506">手术记录与收尾上下文</text>
+
+  <rect class="panel" x="355" y="120" width="542" height="470"/>
+  <text class="section" x="379" y="152">五类业务工作流</text>
+  <rect class="flow" x="383" y="182" width="486" height="62"/>
+  <text class="card-title" x="407" y="207">1. 排班识别到表格写回</text>
+  <text class="body" x="407" y="226">提取病例、字段规范化、去重追加、补漏写入。</text>
+  <text class="mono" x="407" y="239">cathlab-schedule-ocr  +  gsheet-append-dedup</text>
+
+  <rect class="flow" x="383" y="258" width="486" height="62"/>
+  <text class="card-title" x="407" y="283">2. 库存与跟台证据校验</text>
+  <text class="body" x="407" y="302">在写入前校验 Excel、标签、二维码、条码等证据。</text>
+  <text class="mono" x="407" y="315">medical-inventory  +  vendor-sync  +  complaint-update</text>
+
+  <rect class="flow" x="383" y="334" width="486" height="62"/>
+  <text class="card-title" x="407" y="359">3. 仓库补货计划与任务同步</text>
+  <text class="body" x="407" y="378">按剩余库存和目标区间生成补货计划，并同步提醒。</text>
+  <text class="mono" x="407" y="391">warehouse-planning  +  warehouse-shipment-dida-task</text>
+
+  <rect class="risk" x="383" y="410" width="486" height="62"/>
+  <text class="card-title" x="407" y="435">4. 带审批门的 SPD 发货执行</text>
+  <text class="body" x="407" y="454">先出计划，审批后再分配、上传附件、发货并回读验证。</text>
+  <text class="mono" x="407" y="467">spd-confirm-supply  +  order-shipment  +  spd-confirm-delivery</text>
+
+  <rect class="flow" x="383" y="486" width="486" height="62"/>
+  <text class="card-title" x="407" y="511">5. 手术与销售收尾统计</text>
+  <text class="body" x="407" y="530">把每日记录汇总成周报、月报、年度汇总。</text>
+  <text class="mono" x="407" y="543">surgery-summary  +  surgery-volume-summary  +  invoice-records</text>
+
+  <rect class="panel" x="950" y="120" width="288" height="470"/>
+  <text class="section" x="974" y="152">工程控制</text>
+  <rect class="foundation" x="974" y="182" width="240" height="70"/>
+  <text class="card-title" x="996" y="207">共享后端</text>
+  <text class="body" x="996" y="226">腾讯文档 API 封装、重试</text>
+  <text class="body" x="996" y="243">和受限的纯值写入。</text>
+
+  <rect class="risk" x="974" y="272" width="240" height="78"/>
+  <text class="card-title" x="996" y="297">安全门</text>
+  <text class="body" x="996" y="316">live 写入前 dry-run，发货编辑前</text>
+  <text class="body" x="996" y="333">人工审批，执行后回读验证。</text>
+
+  <rect class="foundation" x="974" y="370" width="240" height="70"/>
+  <text class="card-title" x="996" y="395">运行隔离</text>
+  <text class="body" x="996" y="414">真实数据、截图、凭据和浏览器</text>
+  <text class="body" x="996" y="431">profile 不进入版本控制。</text>
+
+  <rect class="foundation" x="974" y="460" width="240" height="78"/>
+  <text class="card-title" x="996" y="485">自我迭代闭环</text>
+  <text class="body" x="996" y="504">失败经验沉淀为 SKILL 规则、</text>
+  <text class="body" x="996" y="521">脚本、测试或 precommit 检查。</text>
+
+  <path class="line" d="M302 355 H355"/>
+  <path class="line" d="M897 355 H950"/>
+  <path class="soft" d="M626 548 C650 642 1010 640 1094 538"/>
+  <text class="label" x="454" y="642">复杂性按业务闭环组织；安全和迭代作为一等工程能力展示。</text>
+  <rect class="foundation" x="42" y="668" width="1196" height="46"/>
+  <text class="label" x="70" y="697">作品集信息：这是面向临床运营的受控 AI 自动化，不是一次性 prompt 或盲目端到端机器人。</text>
+</svg>

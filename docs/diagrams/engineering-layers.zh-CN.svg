@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">工程分层图</title>
+  <desc id="desc">展示临床运营 skill kit 如何隔离 agent 规则、技能、运行数据、凭据和治理控制。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,4 L0,8 z" fill="#334155"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { font: 700 30px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 15px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", sans-serif; fill: #475569; }
+      .layer-title { font: 700 18px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", sans-serif; fill: #0f172a; }
+      .layer-path { font: 700 13px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #334155; }
+      .body { font: 400 13px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", sans-serif; fill: #475569; }
+      .caption { font: 700 12px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", sans-serif; fill: #334155; }
+      .card { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.2; rx: 16; }
+      .capability { fill: #eff6ff; stroke: #93c5fd; stroke-width: 1.4; rx: 16; }
+      .runtime { fill: #ecfdf5; stroke: #86efac; stroke-width: 1.4; rx: 16; }
+      .safety { fill: #fff7ed; stroke: #fb923c; stroke-width: 1.4; rx: 16; }
+      .governance { fill: #f5f3ff; stroke: #a78bfa; stroke-width: 1.4; rx: 16; }
+      .line { fill: none; stroke: #334155; stroke-width: 1.5; marker-end: url(#arrow); }
+      .line-soft { fill: none; stroke: #64748b; stroke-width: 1.2; stroke-dasharray: 6 5; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1280" height="720"/>
+  <text class="title" x="48" y="54">工程分层图</text>
+  <text class="subtitle" x="48" y="80">项目把 agent 规则、可执行技能、真实运行数据、凭据和质量门隔离到不同层。</text>
+
+  <rect class="card" x="56" y="126" width="250" height="150"/>
+  <text class="layer-title" x="80" y="160">Agent 契约</text>
+  <text class="layer-path" x="80" y="184">AGENTS.md</text>
+  <text class="body" x="80" y="214">仓库级执行规则、审批门、</text>
+  <text class="body" x="80" y="235">任务收尾标准和 live 会话</text>
+  <text class="body" x="80" y="256">卫生规则。</text>
+
+  <rect class="capability" x="382" y="126" width="250" height="150"/>
+  <text class="layer-title" x="406" y="160">Skill 目录</text>
+  <text class="layer-path" x="406" y="184">skills/catalog/</text>
+  <text class="body" x="406" y="214">功能集合、入口 skill、</text>
+  <text class="body" x="406" y="235">上下游关系和机器可读</text>
+  <text class="body" x="406" y="256">映射。</text>
+
+  <rect class="capability" x="708" y="126" width="250" height="150"/>
+  <text class="layer-title" x="732" y="160">版本化技能</text>
+  <text class="layer-path" x="732" y="184">skills/*/SKILL.md</text>
+  <text class="body" x="732" y="214">触发条件、工作流步骤、</text>
+  <text class="body" x="732" y="235">失败模式、验收门和</text>
+  <text class="body" x="732" y="256">可复用脚本。</text>
+
+  <rect class="runtime" x="1034" y="126" width="190" height="150"/>
+  <text class="layer-title" x="1058" y="160">运行态</text>
+  <text class="layer-path" x="1058" y="184">workspaces/</text>
+  <text class="body" x="1058" y="214">输入、输出、截图、</text>
+  <text class="body" x="1058" y="235">浏览器 profile 和本地</text>
+  <text class="body" x="1058" y="256">执行产物。</text>
+
+  <path class="line" d="M306 201 H382"/>
+  <path class="line" d="M632 201 H708"/>
+  <path class="line" d="M958 201 H1034"/>
+
+  <rect class="safety" x="80" y="356" width="342" height="174"/>
+  <text class="layer-title" x="108" y="392">安全稳定控制</text>
+  <text class="body" x="108" y="424">1. 高风险 live 编辑前先出计划</text>
+  <text class="body" x="108" y="448">2. 发货动作前必须人工审批</text>
+  <text class="body" x="108" y="472">3. 写入和点击后必须回读验证</text>
+  <text class="body" x="108" y="496">4. 不确定时显式暴露，不猜测</text>
+
+  <rect class="runtime" x="470" y="356" width="342" height="174"/>
+  <text class="layer-title" x="498" y="392">数据边界</text>
+  <text class="body" x="498" y="424">入库：skills、文档、治理脚本</text>
+  <text class="body" x="498" y="448">不入库：患者记录、截图、运行产物</text>
+  <text class="body" x="498" y="472">凭据单独放在 secrets/</text>
+  <text class="body" x="498" y="496">公开版只使用 synthetic fixtures</text>
+
+  <rect class="governance" x="860" y="356" width="342" height="174"/>
+  <text class="layer-title" x="888" y="392">自我迭代闭环</text>
+  <text class="body" x="888" y="424">真实运行失败或人工纠正</text>
+  <text class="body" x="888" y="448">-&gt; 更新 SKILL / reference / script</text>
+  <text class="body" x="888" y="472">-&gt; 增加回归测试或 precommit 门</text>
+  <text class="body" x="888" y="496">-&gt; 未来 agent 自动继承规则</text>
+
+  <path class="line-soft" d="M833 276 C790 334 685 340 641 356"/>
+  <path class="line-soft" d="M833 276 C855 334 963 340 1031 356"/>
+  <path class="line-soft" d="M251 356 C270 318 448 298 507 276"/>
+
+  <rect class="card" x="116" y="594" width="1048" height="58"/>
+  <text class="caption" x="148" y="628">作品集信息：复杂临床运营不是靠盲目全自动解决，而是靠受控工作流、验证门和持续沉淀解决。</text>
+</svg>

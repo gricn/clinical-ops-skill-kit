@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+  <title id="title">Clinical Ops Skill Map</title>
+  <desc id="desc">A readable overview of how inputs flow into five business workflow groups, supported by shared backend, safety gates, runtime isolation, and iteration loop.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,4 L0,8 z" fill="#334155"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { font: 700 30px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 15px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #475569; }
+      .section { font: 700 16px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; }
+      .card-title { font: 700 14px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; }
+      .body { font: 400 12px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #475569; }
+      .mono { font: 600 10.5px ui-monospace, SFMono-Regular, Menlo, monospace; fill: #334155; }
+      .label { font: 700 12px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #334155; }
+      .panel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.2; rx: 18; }
+      .input { fill: #eff6ff; stroke: #93c5fd; stroke-width: 1.2; rx: 12; }
+      .flow { fill: #ffffff; stroke: #94a3b8; stroke-width: 1.2; rx: 12; }
+      .risk { fill: #fff7ed; stroke: #fb923c; stroke-width: 1.4; rx: 12; }
+      .foundation { fill: #f5f3ff; stroke: #a78bfa; stroke-width: 1.2; rx: 12; }
+      .line { fill: none; stroke: #334155; stroke-width: 1.6; marker-end: url(#arrow); }
+      .soft { fill: none; stroke: #64748b; stroke-width: 1.2; stroke-dasharray: 6 5; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1280" height="760"/>
+  <text class="title" x="48" y="54">Clinical Ops Skill Map</text>
+  <text class="subtitle" x="48" y="80">Read from left to right: messy operational inputs become controlled workflows, then engineering controls keep the agent safe and maintainable.</text>
+
+  <rect class="panel" x="42" y="120" width="260" height="470"/>
+  <text class="section" x="66" y="152">Operational inputs</text>
+  <rect class="input" x="66" y="182" width="212" height="54"/>
+  <text class="card-title" x="86" y="207">Schedules</text>
+  <text class="body" x="86" y="226">Word docs / photos / screenshots</text>
+  <rect class="input" x="66" y="252" width="212" height="54"/>
+  <text class="card-title" x="86" y="277">Inventory files</text>
+  <text class="body" x="86" y="296">Excel exports, batch and serial fields</text>
+  <rect class="input" x="66" y="322" width="212" height="54"/>
+  <text class="card-title" x="86" y="347">Evidence labels</text>
+  <text class="body" x="86" y="366">OCR, barcode, QR, handwritten notes</text>
+  <rect class="input" x="66" y="392" width="212" height="54"/>
+  <text class="card-title" x="86" y="417">Business systems</text>
+  <text class="body" x="86" y="436">Tencent Docs, Sheets, SPD pages</text>
+  <rect class="input" x="66" y="462" width="212" height="54"/>
+  <text class="card-title" x="86" y="487">Daily records</text>
+  <text class="body" x="86" y="506">Surgery notes and closeout context</text>
+
+  <rect class="panel" x="355" y="120" width="542" height="470"/>
+  <text class="section" x="379" y="152">Five business workflow groups</text>
+  <rect class="flow" x="383" y="182" width="486" height="62"/>
+  <text class="card-title" x="407" y="207">1. Schedule recognition to sheet writeback</text>
+  <text class="body" x="407" y="226">Extract cases, normalize fields, dedup and patch missing values.</text>
+  <text class="mono" x="407" y="239">cathlab-schedule-ocr  +  gsheet-append-dedup</text>
+
+  <rect class="flow" x="383" y="258" width="486" height="62"/>
+  <text class="card-title" x="407" y="283">2. Inventory and vendor evidence reconciliation</text>
+  <text class="body" x="407" y="302">Validate Excel rows, labels, QR/barcode evidence before writes.</text>
+  <text class="mono" x="407" y="315">medical-inventory  +  vendor-sync  +  complaint-update</text>
+
+  <rect class="flow" x="383" y="334" width="486" height="62"/>
+  <text class="card-title" x="407" y="359">3. Warehouse planning and task sync</text>
+  <text class="body" x="407" y="378">Turn remaining stock and target bands into replenishment tasks.</text>
+  <text class="mono" x="407" y="391">warehouse-planning  +  warehouse-shipment-dida-task</text>
+
+  <rect class="risk" x="383" y="410" width="486" height="62"/>
+  <text class="card-title" x="407" y="435">4. Approval-gated SPD shipment execution</text>
+  <text class="body" x="407" y="454">Plan first, get approval, then allocate, attach, ship and read back.</text>
+  <text class="mono" x="407" y="467">spd-confirm-supply  +  order-shipment  +  spd-confirm-delivery</text>
+
+  <rect class="flow" x="383" y="486" width="486" height="62"/>
+  <text class="card-title" x="407" y="511">5. Surgery and sales closeout reporting</text>
+  <text class="body" x="407" y="530">Aggregate daily records into weekly, monthly and yearly summaries.</text>
+  <text class="mono" x="407" y="543">surgery-summary  +  surgery-volume-summary  +  invoice-records</text>
+
+  <rect class="panel" x="950" y="120" width="288" height="470"/>
+  <text class="section" x="974" y="152">Engineering controls</text>
+  <rect class="foundation" x="974" y="182" width="240" height="70"/>
+  <text class="card-title" x="996" y="207">Shared backend</text>
+  <text class="body" x="996" y="226">Tencent Docs API wrapper, retry</text>
+  <text class="body" x="996" y="243">and bounded value writes.</text>
+
+  <rect class="risk" x="974" y="272" width="240" height="78"/>
+  <text class="card-title" x="996" y="297">Safety gates</text>
+  <text class="body" x="996" y="316">Dry-run before live writes, approval</text>
+  <text class="body" x="996" y="333">before shipment edits, readback after.</text>
+
+  <rect class="foundation" x="974" y="370" width="240" height="70"/>
+  <text class="card-title" x="996" y="395">Runtime isolation</text>
+  <text class="body" x="996" y="414">Real data, captures and credentials</text>
+  <text class="body" x="996" y="431">stay out of version control.</text>
+
+  <rect class="foundation" x="974" y="460" width="240" height="78"/>
+  <text class="card-title" x="996" y="485">Self-iteration loop</text>
+  <text class="body" x="996" y="504">Failures become SKILL rules, scripts,</text>
+  <text class="body" x="996" y="521">tests or precommit checks.</text>
+
+  <path class="line" d="M302 355 H355"/>
+  <path class="line" d="M897 355 H950"/>
+  <path class="soft" d="M626 548 C650 642 1010 640 1094 538"/>
+  <text class="label" x="454" y="642">Complexity is grouped by business workflow; safety and iteration are visible as first-class engineering controls.</text>
+  <rect class="foundation" x="42" y="668" width="1196" height="46"/>
+  <text class="label" x="70" y="697">Portfolio message: this is controlled AI automation for clinical operations, not a one-shot prompt or blind end-to-end bot.</text>
+</svg>
